@@ -1,0 +1,341 @@
+{
+  "items" : [
+    {
+      "company" : "시사IN",
+      "rss_url" : {
+        "all" : "http://www.sisainlive.com/rss.xml",
+        "top" :  "http://www.sisainlive.com/rss/clickTop.xml",
+        "cover" : "http://www.sisainlive.com/rss/SRN121.xml",
+        "politics" : "http://www.sisainlive.com/rss/S1N15.xml",
+        "economy" : "http://www.sisainlive.com/rss/S1N16.xml",
+        "society" : "http://www.sisainlive.com/rss/S1N17.xml",
+        "culture" : "http://www.sisainlive.com/rss/S1N18.xml",
+        "global" :"http://www.sisainlive.com/rss/S1N4.xml",
+        "science" : "http://www.sisainlive.com/rss/S1N6.xml"
+      }
+    },
+      {
+        "company" : "경향",
+        "rss_url" : {
+          "all" : "http://www.khan.co.kr/rss/rssdata/total_news.xml",
+          "politics" : "http://www.khan.co.kr/rss/rssdata/politic.xml",
+          "economy" : "http://www.khan.co.kr/rss/rssdata/economy.xml",
+          "society" : "http://www.khan.co.kr/rss/rssdata/society.xml",
+          "culture" : "http://www.khan.co.kr/rss/rssdata/culture.xml",
+          "science" : "http://www.khan.co.kr/rss/rssdata/itnews.xml",
+          "global" :  "http://www.khan.co.kr/rss/rssdata/world.xml"
+      }
+    },
+    {
+      "company" : "허핑턴포스트",
+      "rss_url" : {
+        "all" : "http://www.huffingtonpost.kr/feeds/verticals/korea/news.xml"
+      }
+    },
+    {
+      "company" : "MBC",
+      "rss_url" : {
+        "all" : "http://imnews.imbc.com/rss/news/news_00.xml",
+        "politics" : "http://imnews.imbc.com/rss/news/news_01.xml",
+        "diplomacy" : "http://imnews.imbc.com/rss/news/news_02.xml",
+        "global" : "http://imnews.imbc.com/rss/news/news_03.xml",
+        "economy" : "http://imnews.imbc.com/rss/news/news_04.xml",
+        "society" : "http://imnews.imbc.com/rss/news/news_05.xml",
+        "culture" : "http://imnews.imbc.com/rss/news/news_06.xml"
+
+      }
+    },
+    {
+      "company" : "MBC",
+      "rss_url" : {
+        "all" : "http://imnews.imbc.com/rss/news/news_00.xml",
+        "politics" : "http://imnews.imbc.com/rss/news/news_01.xml",
+        "diplomacy" : "http://imnews.imbc.com/rss/news/news_02.xml",
+        "global" : "http://imnews.imbc.com/rss/news/news_03.xml",
+        "economy" : "http://imnews.imbc.com/rss/news/news_04.xml",
+        "society" : "http://imnews.imbc.com/rss/news/news_05.xml",
+        "culture" : "http://imnews.imbc.com/rss/news/news_06.xml"
+      }
+    },
+    {
+      "company" : "조선닷컴",
+      "rss_url" : {
+        "all" : "http://www.chosun.com/site/data/rss/rss.xml",
+        "politics" : "http://www.chosun.com/site/data/rss/politics.xml",
+        "global" : "http://www.chosun.com/site/data/rss/international.xml",
+        "economy" : "http://biz.chosun.com/site/data/rss/rss.xml",
+        "society" : "http://imnews.imbc.com/rss/news/news_05.xml",
+        "culture" : "http://www.chosun.com/site/data/rss/culture.xml"
+
+      }
+    },
+    {
+      "company" : "중앙일보",
+      "rss_url" : {
+        "all" : "http://rss.joinsmsn.com/joins_news_list.xml",
+        "politics" : "http://rss.joinsmsn.com/joins_politics_list.xml",
+        "global" : "http://rss.joinsmsn.com/joins_world_list.xml",
+        "economy" : "http://rss.joinsmsn.com/joins_money_list.xml",
+        "society" : "http://rss.joinsmsn.com/joins_life_list.xml",
+        "culture" : "http://rss.joinsmsn.com/joins_culture_list.xml"
+      }
+    },
+    {
+      "company" : "노컷뉴스",
+      "rss_url" : {
+        "all" : "http://rss.nocutnews.co.kr/nocutnews.xml",
+        "politics" : "http://rss.nocutnews.co.kr/NocutPolitics.xml",
+        "global" : "http://rss.nocutnews.co.kr/NocutEconomy.xml",
+        "economy" : "http://rss.nocutnews.co.kr/NocutEconomy.xml",
+        "society" : "http://rss.nocutnews.co.kr/NocutSocial.xml",
+        "culture" : "http://rss.nocutnews.co.kr/NocutCulture.xml"
+      }
+    },
+    {
+      "company" : "동아일보",
+      "rss_url" : {
+        "all" : "http://rss.donga.com/total.xml",
+        "politics" : "http://rss.donga.com/politics.xml",
+        "global" : "http://rss.donga.com/international.xml",
+        "economy" : "http://rss.donga.com/economy.xml",
+        "society" : "http://rss.donga.com/national.xml"
+      }
+    },
+    {
+      "company" : "세계일보",
+      "rss_url" : {
+        "all" : "http://rss.segye.com/segye_recent.xml",
+        "politics" : "http://rss.segye.com/segye_politic.xml",
+        "global" : "http://rss.segye.com/segye_international.xml",
+        "economy" : "http://rss.segye.com/segye_economy.xm",
+        "society" : "http://rss.segye.com/segye_society.xml"
+      }
+    },
+    {
+      "company" : "매일경제",
+      "rss_url" : {
+        "all" : "http://file.mk.co.kr/news/rss/rss_30000001.xml",
+        "politics" : "http://file.mk.co.kr/news/rss/rss_30200030.xml",
+        "global" : "http://file.mk.co.kr/news/rss/rss_30300018.xml",
+        "economy" : "http://file.mk.co.kr/news/rss/rss_30100041.xml",
+        "society" : "http://file.mk.co.kr/news/rss/rss_50400012.xml"
+      }
+    },
+    {
+      "company" : "한국아이닷컴",
+      "rss_url" : {
+        "all" : "http://rss.hankooki.com/news/hk_main.xml",
+        "politics" : "http://rss.hankooki.com/news/hk_politics.xml",
+        "global" : "http://rss.hankooki.com/news/hk_world.xml",
+        "economy" : "http://rss.hankooki.com/news/hk_economy.xml",
+        "society" : "http://rss.hankooki.com/news/hk_society.xml"
+      }
+    },
+    {
+      "company" : "미디어오늘",
+      "rss_url" : {
+        "all" : "http://www.mediatoday.co.kr/rss/allArticle.xml",
+        "politics" : "http://www.mediatoday.co.kr/rss/S1N1.xml",
+        "global" : "http://www.mediatoday.co.kr/rss/S1N6.xml",
+        "economy" : "http://www.mediatoday.co.kr/rss/S1N2.xml",
+        "society" : "http://www.mediatoday.co.kr/rss/S1N4.xml"
+      }
+    },
+    {
+      "company" : "한국경제",
+      "rss_url" : {
+        "all" : "http://rss.hankyung.com/economy.xml",
+        "politics" : "http://rss.hankyung.com/politics.xml",
+        "economy" : "http://rss.hankyung.com/economy.xml"
+      }
+    },
+    {
+      "company" : "파이낸셜 뉴스",
+      "rss_url" : {
+        "all" : "http://www.fnnews.com/rss/fn_realnews_all.xml",
+        "politics" : "http://www.fnnews.com/rss/fn_realnews_politics.xml",
+        "economy" : "http://www.fnnews.com/rss/fn_realnews_economy.xml"
+      }
+    },
+    {
+      "company" : "헤럴드경제",
+      "rss_url" : {
+        "all" : "http://biz.heraldm.com/rss/010000000000.xml",
+        "politics" : "http://biz.heraldm.com/rss/010108000000.xml",
+        "economy" : "http://biz.heraldm.com/rss/010104000000.xml",
+        "society" : "http://biz.heraldm.com/rss/010109000000.xml",
+        "global" : "http://biz.heraldm.com/rss/010110000000.xml"
+      }
+    },
+    {
+      "company" : "쿠키뉴스",
+      "rss_url" : {
+        "all" : "http://www.kukinews.com/rss/kukiRssAll.xml",
+        "politics" : "http://www.kukinews.com/rss/kukiPolRss.xml",
+        "economy" : "http://www.kukinews.com/rss/kmibEcoRss.xml",
+        "society" : "http://www.kukinews.com/rss/kukiSocRss.xml",
+        "global" : "http://www.kukinews.com/rss/kmibIntRss.xml"
+      }
+    },
+    {
+      "company" : "연합뉴스",
+      "rss_url" : {
+        "all" : "http://www.yonhapnews.co.kr/RSS/sokbo.xml",
+        "politics" : "http://www.yonhapnews.co.kr/RSS/politics.xml",
+        "economy" : "http://www.yonhapnews.co.kr/RSS/economy.xml",
+        "society" : "http://www.yonhapnews.co.kr/RSS/society.xml",
+        "global" : "http://www.yonhapnews.co.kr/RSS/international.xml"
+      }
+    },
+    {
+      "company" : "시티뉴스",
+      "rss_url" : {
+        "all" : "http://www.clubcity.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "시티뉴스",
+      "rss_url" : {
+        "all" : "http://www.datanet.co.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "K모바일",
+      "rss_url" : {
+        "all" : "http://www.kmobile.co.kr/rss/all"
+      }
+    },
+    {
+      "company" : "뉴스포스트",
+      "rss_url" : {
+        "all" : "http://www.newspost.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "뉴스데일리",
+      "rss_url" : {
+        "all" : "http://www.newsdaily.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "뉴스위드",
+      "rss_url" : {
+        "all" : "http://www.newswith.co.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "컨슈머타임스",
+      "rss_url" : {
+        "all" : "http://www.cstimes.com/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "코리아뉴스방송",
+      "rss_url" : {
+        "all" : "http://www.koreanewstv.com/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "엔터포츠",
+      "rss_url" : {
+        "all" : "http://www.enponews.com/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "에버뉴스",
+      "rss_url" : {
+        "all" : "http://www.evernews.co.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "주간포커스",
+      "rss_url" : {
+        "all" : "http://www.focuscolorado.net/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "라이프업",
+      "rss_url" : {
+        "all" : "http://www.laup.co.kr/rss/rss.php"
+      }
+    },
+    {
+      "company" : "ZDNet Korea",
+      "rss_url" : {
+        "all" : "http://www.zdnet.co.kr/Include2/ZDNetKorea_News.xml"
+      }
+    },
+    {
+      "company" : "다음 뉴스",
+      "rss_url" : {
+        "all" : "http://media.daum.net/rss/today/primary/all/rss2.xml",
+        "society" : "http://media.daum.net/rss/part/primary/society/rss2.xml",
+        "politics" : "http://media.daum.net/rss/part/primary/politics/rss2.xml",
+        "economy" : "http://media.daum.net/rss/part/primary/economic/rss2.xml",
+        "global" : "http://media.daum.net/rss/part/primary/foreign/rss2.xml",
+        "culture" : "http://media.daum.net/rss/part/primary/culture/rss2.xml"
+      }
+    },
+    {
+      "company" : "파란 뉴스",
+      "rss_url" : {
+        "all" : "http://media.paran.com/rss/rss.kth?view=10",
+        "society" : "http://media.paran.com/rss/rss.kth?view=4",
+        "politics" : "http://media.paran.com/rss/rss.kth?view=2",
+        "economy" : "http://media.paran.com/rss/rss.kth?view=3",
+        "global" : "http://media.paran.com/rss/rss.kth?view=8",
+        "culture" : "http://media.paran.com/rss/rss.kth?view=7"
+      }
+    },
+    {
+      "company" : "구글 뉴스",
+      "rss_url" : {
+        "all" : "http://news.google.co.kr/news?pz=1&cf=all&ned=kr&hl=ko&output=rss",
+        "society" : "http://news.google.co.kr/news?pz=1&cf=all&ned=kr&hl=ko&topic=y&output=rss",
+        "politics" : "http://news.google.co.kr/news?pz=1&cf=all&ned=kr&hl=ko&topic=p&output=rss",
+        "economy" : "http://news.google.co.kr/news?pz=1&cf=all&ned=kr&hl=ko&topic=b&output=rss",
+        "global" : "http://news.google.co.kr/news?pz=1&cf=all&ned=kr&hl=ko&topic=w&output=rss",
+        "culture" : "http://news.google.co.kr/news?pz=1&cf=all&ned=kr&hl=ko&topic=l&output=rss"
+      }
+    },
+    {
+      "company" : "경인일보",
+      "rss_url" : {
+        "all" : "http://www.kyeongin.com/rss/allArticle.xml",
+        "society" : "http://www.kyeongin.com/rss/S1N3.xml4",
+        "politics" : "http://www.kyeongin.com/rss/S1N1.xml2",
+        "economy" : "http://www.kyeongin.com/rss/S1N2.xml3",
+        "global" : "http://www.kyeongin.com/rss/S1N8.xml9",
+        "culture" : "http://www.kyeongin.com/rss/S1N5.xml6"
+      }
+    },
+    {
+      "company" : "중부매일",
+      "rss_url" : {
+        "all" : "http://www.jbnews.com/rss/allArticle.xml",
+        "society" : "http://www.jbnews.com/rss/S1N3.xml",
+        "politics" : "http://www.jbnews.com/rss/S1N1.xml",
+        "economy" : "http://www.jbnews.com/rss/S1N2.xml",
+        "global" : "http://www.jbnews.com/rss/S1N16.xml",
+        "culture" : "http://www.jbnews.com/rss/S1N4.xml"
+      }
+    },
+    {
+      "company" : "한국기자협회",
+      "rss_url" : {
+        "all" : "http://www.journalist.or.kr/rss/allArticle.xml"
+      }
+    },
+    {
+      "company" : "뉴스웨이",
+      "rss_url" : {
+        "all" : "http://www.newsway.kr/rss/allArticle.xml",
+        "society" : "http://www.newsway.kr/rss/S1N3.xml",
+        "politics" : "http://www.newsway.kr/rss/S1N1.xml",
+        "economy" : "http://www.newsway.kr/rss/S1N2.xml",
+        "global" : "http://www.newsway.kr/rss/S1N6.xml",
+        "culture" : "http://www.newsway.kr/rss/S1N4.xmll"
+      }
+    }
+  ]
+}

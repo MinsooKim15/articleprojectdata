@@ -1,0 +1,4 @@
+{
+  "urlFile" : "./url/rss.json",
+  "healthFile" : "./url/health.json"
+}
