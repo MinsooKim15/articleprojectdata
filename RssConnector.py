@@ -20,6 +20,8 @@ class RssConnector:
     def __init__(self):
         with open('config.json') as json_data_file:
             data0 = json.load(json_data_file)
+        self.onlyCompany = data0['onlyCompanyInFilter']
+        self.company = data0['companyToFilter']
         self.jsonConfig = data0['urlFile']
         self.healthConfig = data0['healthFile']
         self.result = 0
@@ -28,21 +30,30 @@ class RssConnector:
     def connector(self):
         result = {}
         healthCheckResult = {}
+        print(self.onlyCompany,bool)
         with open(self.jsonConfig,"rt", encoding= "utf-8") as f:
             data = json.load(f)
         for i in range(len(data["items"])):
             url = data["items"][i]['rss_url']["all"]
             d = feedparser.parse(url)
-            if (len(d['entries']) != 0):
-                result.update({data['items'][i]['company']:d['entries']})
-                healthCheckResult.update({data['items'][i]['company']: True})
-                # print(data["items"][i]['company'])
-                # print(d['feed']['title'])
-                # print(d['feed']['title'])
-                # print(d['entries'][0])
+            companyName = data['items'][i]['company']
+            if self.onlyCompany == "True":
+                for k in self.company:
+                    if k == companyName :
+                        if (len(d['entries']) != 0):
+                            result.update({data['items'][i]['company']:d['entries']})
+                            healthCheckResult.update({companyName: True})
+                        else:
+                            healthCheckResult.update({companyName: False})
             else:
-                healthCheckResult.update({data['items'][i]['company']: False})
+                if (len(d['entries']) != 0):
+                    result.update({data['items'][i]['company']:d['entries']})
+                    healthCheckResult.update({companyName: True})
+                else:
+                    healthCheckResult.update({companyName: False})
         return (result, healthCheckResult)
+
+
     def healthChecker(self, result):
         # typechecking
         if isinstance(result, dict):
@@ -55,8 +66,11 @@ class RssConnector:
             print("This is not dictionary!!")
 
 
+
 if __name__ == "__main__":
     rssConnector = RssConnector()
     result, healthCheckResult= rssConnector.connector()
     rssConnector.healthChecker(healthCheckResult)
+    with open('./temp4.json','w') as fp:
+        json.dump(result, fp, ensure_ascii=False)
     print("done")
