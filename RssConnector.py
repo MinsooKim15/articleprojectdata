@@ -3,7 +3,7 @@
 import feedparser
 import json
 from pprint import pprint
-
+from dateutil import parser
 
 # print(data)
 # if(d[])
@@ -12,7 +12,12 @@ from pprint import pprint
 
 
 # TODO : HealthChecker
-# TODO : MYSQL 입력기
+# TODO : Make Article ID
+# TODO : Article ID CHECKER(중복제거기)
+# TODO : Cover all the press Compnay
+# TODO : Internet Connection Error 예외 정의
+# TODO : 아직도 같은 ID가 있음 우쨔지
+
 # 근데 Class에서 Dependency가 있으면 어떻게하지
 
 #RSSConnecter : RSS JSON 파일 읽어옴, RSS 호출 1) 결과를 뱉음, 2) Health Check를 함.
@@ -42,20 +47,23 @@ class RssConnector:
             url = data["items"][i]['rss_url']["all"]
             d = feedparser.parse(url)
             companyName = data['items'][i]['company']
+            pressId = data['items'][i]['press_id']
+            companyId = str(pressId) + "_" + str(companyName)
+            print(companyId)
             if self.onlyCompany == "True":
                 for k in self.company:
                     if k == companyName :
                         if (len(d['entries']) != 0):
-                            result.update({data['items'][i]['company']:d['entries']})
-                            healthCheckResult.update({companyName: True})
+                            result.update({companyId:d['entries']})
+                            healthCheckResult.update({companyId: True})
                         else:
-                            healthCheckResult.update({companyName: False})
+                            healthCheckResult.update({companyId: False})
             else:
                 if (len(d['entries']) != 0):
-                    result.update({data['items'][i]['company']:d['entries']})
-                    healthCheckResult.update({companyName: True})
+                    result.update({companyId:d['entries']})
+                    healthCheckResult.update({companyId: True})
                 else:
-                    healthCheckResult.update({companyName: False})
+                    healthCheckResult.update({companyId: False})
         return (result, healthCheckResult)
 
     def healthChecker(self, result):
@@ -77,30 +85,73 @@ class RssConnector:
         curs = conn.cursor()
         values_to_insert = []
         for i in data:
-    # 고른 언론사 중 특정한..
+            # 고른 언론사 중 특정한..
+            print(i)
+            companyList = str(i).split("_")
+            print(companyList)
+            companyId = companyList[0]
+            companyName = companyList[1]
             for k in data[i]:
                 file_title = k["title"]
                 file_summary = k["summary"]
                 file_link = k["link"]
-                file_article_write_time = k["updated"]
+                #published가 있으면 해당 값을 최초 작성 값, 없으면 updated를 최초 작성값으로 쓴다.
+                if "published" in k:
+                    file_article_write_time = k["published"]
+                else:
+                    file_article_write_time = k["updated"]
+                file_articleId = self.makeArticleId(companyId, file_article_write_time)
                 # file_article_write_time = datetime.strptime(file_article_write_time, '%Y-%m-%d %H:%M:%S')
-                file_author = k["author"]
-                values_to_insert.append((file_title,file_summary,file_link,file_article_write_time,file_author))
+                if "author" in k :
+                    file_author = k["author"]
+                else:
+                    file_author = None
+                values_to_insert.append((file_title,file_summary,file_link,file_article_write_time,file_author, companyName, companyId, file_articleId))
                 # # print(file_article_write_time)
                 # print(file_author)
         try:
             with conn.cursor() as cursor:
-                sql = "INSERT INTO article (title, summary, link, article_write_time, author) VALUES " + ",".join("(%s,%s,%s,%s,%s)" for _ in values_to_insert)
+                print("sql start")
+                sql = "INSERT INTO article (title, summary, link, article_write_time, author, companyName, companyId, articleId) VALUES " + ",".join("(%s,%s,%s,%s,%s,%s,%s,%s)" for _ in values_to_insert)
+                print(sql)
                 flattened_values = [item for sublist in values_to_insert for item in sublist]
-                print(flattened_values)
+                # print(flattened_values)
                 cursor.execute(sql, flattened_values)
+                print(cursor)
             conn.commit()
             print(cursor.lastrowid)
+        except Exception as except_detail:
+            print("pymysql.err.ProgrammingError: «{}»".format(except_detail))
         finally:
             conn.close()
             print("good")
             return True
+    def makeArticleId(self,pressId,datetime):
+        datetimeParsed = parser.parse(datetime)
+        year = str(datetimeParsed.year)
+        if datetimeParsed.month < 10 :
+            month = "0" + str(datetimeParsed.month)
+        else :
+            month = str(datetimeParsed.month)
+        if datetimeParsed.day < 10 :
+            day = "0" + str(datetimeParsed.day)
+        else:
+            day  = str(datetimeParsed.day)
+        if datetimeParsed.hour < 10 :
+            hour = "0" + str(datetimeParsed.hour)
+        else:
+            hour = str(datetimeParsed.hour)
+        if datetimeParsed.minute < 10 :
+            minute = "0" + str(datetimeParsed.minute)
+        else:
+            minute = str(datetimeParsed.minute)
+        if datetimeParsed.second < 10 :
+            second = "0" + str(datetimeParsed.second)
+        else :
+            second = str(datetimeParsed.second)
 
+        newId  = "art_"+str(pressId)+"_"+ year+ month + day + hour + minute + second
+        return newId
 
 
 if __name__ == "__main__":
@@ -109,6 +160,6 @@ if __name__ == "__main__":
     # print(result)
     rssConnector.dataToMysql(result)
     # rssConnector.healthChecker(healthCheckResult)
-    # with open('./temp5.json','w') as fp:
-    #     json.dump(result, fp, ensure_ascii=False)
+    # with open('./chosun.json','w') as fp:
+        # json.dump(result, fp, ensure_ascii=False)
     # print("done")
