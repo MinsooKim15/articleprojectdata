@@ -4,6 +4,9 @@ import feedparser
 import json
 from pprint import pprint
 from dateutil import parser
+import hashlib
+
+
 
 # print(data)
 # if(d[])
@@ -16,7 +19,9 @@ from dateutil import parser
 # TODO : Article ID CHECKER(중복제거기)
 # TODO : Cover all the press Compnay
 # TODO : Internet Connection Error 예외 정의
-# TODO : 아직도 같은 ID가 있음 우쨔지
+# TODO : 아직도 같은 ID가 있음 우쨔지 -> Title Id 만듬
+# 정책 : 시간Id로 체크, 같은 것이 있으면 Title Id로 체크함.
+
 
 # 근데 Class에서 Dependency가 있으면 어떻게하지
 
@@ -106,13 +111,17 @@ class RssConnector:
                     file_author = k["author"]
                 else:
                     file_author = None
-                values_to_insert.append((file_title,file_summary,file_link,file_article_write_time,file_author, companyName, companyId, file_articleId))
+                hasher = hashlib.sha256()
+                hasher.update(file_title.encode('utf-8'))
+                titleId = hasher.hexdigest()
+                values_to_insert.append((file_title,file_summary,file_link,file_article_write_time,file_author, companyName, companyId, file_articleId, titleId))
+
                 # # print(file_article_write_time)
                 # print(file_author)
         try:
             with conn.cursor() as cursor:
                 print("sql start")
-                sql = "INSERT INTO article (title, summary, link, article_write_time, author, companyName, companyId, articleId) VALUES " + ",".join("(%s,%s,%s,%s,%s,%s,%s,%s)" for _ in values_to_insert)
+                sql = "INSERT INTO article (title, summary, link, article_write_time, author, companyName, companyId, articleId, titleId) VALUES " + ",".join("(%s,%s,%s,%s,%s,%s,%s,%s,%s)" for _ in values_to_insert)
                 print(sql)
                 flattened_values = [item for sublist in values_to_insert for item in sublist]
                 # print(flattened_values)
