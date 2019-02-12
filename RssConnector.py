@@ -21,7 +21,7 @@ import hashlib
 # TODO : Internet Connection Error 예외 정의
 # TODO : 아직도 같은 ID가 있음 우쨔지 -> Title Id 만듬
 # 정책 : 시간Id로 체크, 같은 것이 있으면 Title Id로 체크함.
-
+# TODO : 객체화
 
 # 근데 Class에서 Dependency가 있으면 어떻게하지
 
@@ -167,8 +167,7 @@ if __name__ == "__main__":
     rssConnector = RssConnector()
     result, healthCheckResult= rssConnector.connector()
     # print(result)
-    rssConnector.dataToMysql(result)
+    # rssConnector.dataToMysql(result)
     # rssConnector.healthChecker(healthCheckResult)
-    # with open('./chosun.json','w') as fp:
-        # json.dump(result, fp, ensure_ascii=False)
-    # print("done")
+    with open('./all.json','w') as fp:
+        json.dump(result, fp, ensure_ascii=False)
