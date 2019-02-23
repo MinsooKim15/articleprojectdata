@@ -18,13 +18,13 @@ class ArticleParser:
         self.dbId = data0['mysql']['id']
         self.pw = data0['mysql']['pw']
         self.db = data0['mysql']['db']
-    def get_article_list(self):
+    def get_article_list(self,company):
 
         conn = pymysql.connect(host= self.dbHost, user = self.dbId, password = self.pw, db = self.db, charset='utf8')
         cursor = conn.cursor()
         print("sql start")
-        # sql = "select * from article"
-        sql = "select * from `article` where `companyName` = '경향'"
+        sql = "select * from article where WHERE field IS NULL AND `companyId` = " + company
+        # sql = "select * from `article` where `companyName` = '경향'"
         print(sql)
         # flattened_values = [item for sublist in values_to_insert for item in sublist]
         # print(flattened_values)
@@ -55,7 +55,10 @@ class ArticleParser:
             article = newspaper.Article('')
             article.set_html(html)
             article.parse()
-            a = (article.text,i[0])
+            #UTF-8 아닌 문자 삭제
+            line = article.text
+            line = line.encode("utf-8").decode('utf-8','ignore').encode("utf-8")
+            a = (line,i[0])
             self.article_list.append(a)
             print("parse Done")
     def saveToMysql(self):
@@ -84,7 +87,18 @@ class ArticleParser:
 
 
 if __name__ == "__main__":
+    companyIdList = []
+    for i in range(38):
+        if i+1 >= 10:
+            companyId = "0" +str(i+1)
+        else:
+            companyId = "00" + str(i+1)
+        companyIdList.append(companyId)
+
+    # print(companyIdList)
+
     articleParser = ArticleParser()
-    articleParser.get_article_list()
-    articleParser.parse()
-    articleParser.saveToMysql()
+    for i in companyIdList:
+        articleParser.get_article_list(i)
+        articleParser.parse()
+        articleParser.saveToMysql()

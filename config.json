@@ -1,6 +1,14 @@
 {
-  "urlFile" : "./url/rss.json",
-  "healthFile" : "./url/health.json",
-  "onlyCompanyInFilter" : "True",
-  "companyToFilter" : ["경향"]
+  "rss": {
+    "urlFile" : "./url/rss.json",
+    "healthFile" : "./url/health.json",
+    "onlyCompanyInFilter" : "False",
+    "companyToFilter" : ["조선닷컴"]
+  },
+  "mysql" : {
+    "host" : "localhost",
+    "id" : "root",
+    "pw" : "1234567890",
+    "db" : "articleList"
+  }
 }
