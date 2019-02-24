@@ -17,7 +17,6 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-
 class TopicCluster():
     articleData = pd.DataFrame()
     tfidfFrame = pd.DataFrame()
@@ -41,12 +40,20 @@ class TopicCluster():
     #
     # def tokenizer_morphs(doc):
     #     return twitter.morphs(doc)
-
+    def twitter_vectorizer(self,list):
+        from konlpy.tag import Kkma
+        kkma = Kkma()
+        from konlpy.tag import Twitter
+        twitter = Twitter()
+        # a = []
+        # for i in list:
+            # a = a + twitter.nouns(i)
+        return(twitter.nouns(list))
 
     def vectorizeByTFIDF(self):
         #전 처리(정리)
         #왜인지 '\n'들이 제거 안 된 것들이 많이 남아있음.
-        articleList = self.articleData['article_body'].values
+        articleList = self.articleData[['article_body']].dropna().values
         new_articleList = []
         for i in articleList:
             article = ""
@@ -54,26 +61,33 @@ class TopicCluster():
                 article = article + k
             article.rstrip('\n')
             article.replace('\n', '')
+            article = article.encode('utf-8').decode('utf-8')
             new_articleList.append(article)
-        print(new_articleList)
-        from konlpy.tag import Kkma
-        kkma = Kkma()
-        print(kkma.nouns(new_articleList))
-        # tfidf = TfidfVectorizer(tokenizer=twitter.nouns,max_features = 1000, max_df=0.95, min_df=0)
+            new_articleArray = np.array(new_articleList)
+        # print(new_articleList)
+
+        # print(repr(unicode(an)))
+        # an = repr(unicode(an))
+        # an = codecs.decode(an, 'unicode_escape')
+        tfidf = TfidfVectorizer(tokenizer=self.twitter_vectorizer,max_features = 1000, max_df=0.95, min_df=0)
+        # print(tfidf)
         #generate tf-idf term-document matrix
-        # A_tfidf_sp = tfidf.fit_transform(new_articleList)  #size D x V
-        # tfidf_dict = tfidf.get_feature_names()
-        # data_array = A_tfidf_sp.toarray()
-        # self.tfidfFrame = pd.DataFrame(data_array, columns=tfidf_dict)
+        A_tfidf_sp = tfidf.fit_transform(new_articleList)  #size D x V
+
+        tfidf_dict = tfidf.get_feature_names()
+        # print(tfidf_dict)
+        data_array = A_tfidf_sp.toarray()
+        self.tfidfFrame = pd.DataFrame(data_array, columns=tfidf_dict)
 
     def numberOfCluster(self):
 
         #일단 기본 값으로 10을 넣는다. 이건 더 실험해보고 넣자
-        return 10
+        self.n_clusters = 10
 
     def clusterByHAC(self):
         from sklearn.cluster import AgglomerativeClustering
-        cluster = AgglomerativeClustering(n_clusters=self.numberOfCluster, affinity='euclidean', linkage='ward')
+        self.numberOfCluster()
+        cluster = AgglomerativeClustering(n_clusters=self.n_clusters, affinity='euclidean', linkage='ward')
         topic = cluster.fit_predict(self.tfidfFrame)
         self.articleData["topic"] = topic
 
@@ -85,5 +99,5 @@ if __name__ == "__main__":
     topicCluster = TopicCluster()
     topicCluster.getArticle()
     topicCluster.vectorizeByTFIDF()
-    # topicCluster.clusterByHAC()
-    # print(topicCluster.articleData["article_body","topic"])
+    topicCluster.clusterByHAC()
+    print(topicCluster.articleData[["article_body","topic"]])
